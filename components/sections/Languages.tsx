@@ -3,12 +3,12 @@ import { SectionHead } from '@/components/ui/SectionHead';
 import { T } from '@/components/ui/T';
 import { languages } from '@/content/copy';
 
-export function Languages() {
+export function Languages({ n = 'IV' }: { n?: string }) {
   return (
-    <section id="languages" aria-labelledby="lang-h" className="bg-bottle py-20 text-ivory md:py-28">
+    <section id="languages" aria-labelledby="lang-h" className="on-dark bg-bottle py-20 text-ivory md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-8">
-        <div className="[&_h2]:text-ivory [&_p]:text-ivory/80 [&_.roman]:text-gold [&_hr]:bg-gold/50">
-          <SectionHead n="IV" id="lang-h" title="Языки" lead="Английский и китайский — языки, с которыми ребёнок выйдет в мир." />
+        <div className="[&_h2]:text-ivory [&_p]:text-ivory/80 [&_.roman]:text-gold-soft [&_hr]:bg-gold/50">
+          <SectionHead n={n} id="lang-h" title="Языки" lead="Английский и китайский — языки, с которыми ребёнок выйдет в мир." />
         </div>
         <div className="grid gap-px bg-gold/30 md:grid-cols-2">
           {languages.map((l, i) => (

@@ -1,8 +1,6 @@
 'use client';
 import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Reveal } from '@/components/motion/Reveal';
 import { SectionHead } from '@/components/ui/SectionHead';
 import { T } from '@/components/ui/T';
@@ -56,7 +54,6 @@ export function DayScene() {
   const [clock, setClock] = useState('8:00');
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
     const mq = window.matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)');
     const sync = () => setPinned(mq.matches && !document.documentElement.classList.contains('a11y-still'));
     sync();
@@ -67,6 +64,12 @@ export function DayScene() {
   useEffect(() => {
     if (!pinned || !root.current) return;
     let last = -1;
+    let kill = () => {};
+    let cancelled = false;
+    (async () => {
+    const [{ gsap }, { ScrollTrigger }] = await Promise.all([import('gsap'), import('gsap/ScrollTrigger')]);
+    if (cancelled || !root.current) return;
+    gsap.registerPlugin(ScrollTrigger);
     const st = ScrollTrigger.create({
       trigger: root.current,
       start: 'top top',
@@ -89,7 +92,9 @@ export function DayScene() {
     });
     gsap.set(hands.current.h, { rotation: (START % 12) * 30, svgOrigin: '200 200' });
     gsap.set(hands.current.m, { rotation: 0, svgOrigin: '200 200' });
-    return () => st.kill();
+    kill = () => st.kill();
+    })();
+    return () => { cancelled = true; kill(); };
   }, [pinned]);
 
   const header = (

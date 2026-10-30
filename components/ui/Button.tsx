@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { ComponentProps } from 'react';
 
 type Variant = 'primary' | 'ghost' | 'light';
@@ -14,6 +15,10 @@ type ButtonProps = ComponentProps<'button'> & { variant?: Variant; href?: undefi
 export function Button(props: LinkProps | ButtonProps) {
   const { variant = 'primary', className = '', ...rest } = props;
   const cls = `${base} ${styles[variant]} ${className}`;
-  if (props.href !== undefined) return <a {...(rest as ComponentProps<'a'>)} className={cls} />;
+  if (props.href !== undefined) {
+    const { href, ...a } = rest as ComponentProps<'a'> & { href: string };
+    if (href.startsWith('/')) return <Link href={href} {...a} className={cls} />;
+    return <a href={href} {...a} className={cls} />;
+  }
   return <button {...(rest as ComponentProps<'button'>)} className={cls} />;
 }

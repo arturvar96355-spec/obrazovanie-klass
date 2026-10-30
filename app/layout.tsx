@@ -26,6 +26,7 @@ const golos = localFont({
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
   title: { default: `${site.name} — частная школа и детский сад в Москве`, template: `%s — ${site.name}` },
   description: site.description,
   robots: { index: false, follow: false },

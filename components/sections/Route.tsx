@@ -5,12 +5,12 @@ import { T } from '@/components/ui/T';
 import { route } from '@/content/copy';
 import { site } from '@/content/site';
 
-export function Route() {
+export function Route({ n = 'X' }: { n?: string }) {
   return (
     <section id="route" aria-labelledby="route-h" className="bg-paper py-20 md:py-28">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-2 md:px-8">
         <div>
-          <SectionHead n="X" id="route-h" title={route.title} />
+          <SectionHead n={n} id="route-h" title={route.title} />
           <address className="space-y-3 not-italic">
             <p className="font-serif text-2xl"><T>{route.text}</T></p>
             <p className="text-ink-soft"><T>{route.metro}</T></p>

@@ -7,6 +7,8 @@
   --color-paper: #EFE8D8;
   --color-ink: #1A1A17;
   --color-gold: #B08D57;
+  --color-gold-ink: #7A5C2A;
+  --color-gold-soft: #D8BC8A;
   --color-ink-soft: #4a4a42;
   --color-line: #d9cfb8;
 
@@ -35,7 +37,7 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 600; line-height: 1.12; letter-spacing: -0.01em; text-wrap: balance; }
+h1, h2, h3, h4 { overflow-wrap: break-word; font-family: var(--font-serif); font-weight: 600; line-height: 1.12; letter-spacing: -0.01em; text-wrap: balance; }
 p { text-wrap: pretty; }
 
 /* Бумажная фактура: лёгкий шум 2–3% */
@@ -67,7 +69,7 @@ main, header, footer { position: relative; z-index: 1; }
   padding: 0 0.3em;
   border: 1px dashed color-mix(in srgb, var(--color-claret) 55%, transparent);
   border-radius: 3px;
-  color: color-mix(in srgb, var(--color-ink) 62%, transparent);
+  color: color-mix(in srgb, var(--color-ink) 80%, transparent);
   background: color-mix(in srgb, var(--color-gold) 10%, transparent);
   font-family: var(--font-sans);
   font-style: normal;
@@ -78,7 +80,7 @@ main, header, footer { position: relative; z-index: 1; }
 
 /* Тонкая линейка и номера разделов */
 .rule { height: 1px; background: var(--color-line); border: 0; }
-.roman { font-family: var(--font-serif); color: var(--color-gold); letter-spacing: 0.04em; }
+.roman { font-family: var(--font-serif); color: var(--color-gold-ink); letter-spacing: 0.04em; }
 
 /* Ссылки с подчёркиванием */
 .link-u { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .4s var(--ease-editorial); }
@@ -86,7 +88,7 @@ main, header, footer { position: relative; z-index: 1; }
 
 /* Версия для слабовидящих */
 html.a11y-large { font-size: 125%; }
-html.a11y-contrast { --color-ivory: #fff; --color-paper: #fff; --color-ink: #000; --color-ink-soft: #000; --color-line: #000; --color-bottle: #000; --color-claret: #000; --color-gold: #000; }
+html.a11y-contrast { --color-gold-ink: #000; --color-gold-soft: #fff; --color-ivory: #fff; --color-paper: #fff; --color-ink: #000; --color-ink-soft: #000; --color-line: #000; --color-bottle: #000; --color-claret: #000; --color-gold: #000; }
 html.a11y-contrast body::before { display: none; }
 html.a11y-still *, html.a11y-still *::before, html.a11y-still *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 
@@ -99,3 +101,14 @@ html.a11y-still *, html.a11y-still *::before, html.a11y-still *::after { animati
 .ken-burns { animation: kb 12s ease-in-out infinite alternate; transform-origin: 60% 40%; will-change: transform; }
 @media (prefers-reduced-motion: reduce) { .ken-burns { animation: none !important; } }
 html.a11y-still .ken-burns { animation: none !important; }
+
+/* Заглушки на тёмном фоне */
+.on-dark .ph { color: #F7F3EA; background: rgb(176 141 87 / 0.22); border-color: #B08D57; }
+
+@keyframes rise { from { transform: translateY(110%); } to { transform: translateY(0); } }
+.letter { display: inline-block; animation: rise .9s cubic-bezier(.22,1,.36,1) both; }
+html.a11y-still .letter { animation: none; }
+
+@keyframes fadeup { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.fade-up { animation: fadeup .9s cubic-bezier(.22,1,.36,1) both; animation-delay: var(--d, 0s); }
+html.a11y-still .fade-up { animation: none; }

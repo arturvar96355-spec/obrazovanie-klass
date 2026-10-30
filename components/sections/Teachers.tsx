@@ -4,11 +4,11 @@ import { SectionHead } from '@/components/ui/SectionHead';
 import { T } from '@/components/ui/T';
 import { photoNote, teachers, teachersLead } from '@/content/teachers';
 
-export function Teachers() {
+export function Teachers({ n = 'VI' }: { n?: string }) {
   return (
     <section id="teachers" aria-labelledby="t-h" className="bg-paper py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-8">
-        <SectionHead n="VI" id="t-h" title="Учителя" lead={teachersLead} />
+        <SectionHead n={n} id="t-h" title="Учителя" lead={teachersLead} />
         <ul className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {teachers.map((t, i) => (
             <li key={t.subject}>

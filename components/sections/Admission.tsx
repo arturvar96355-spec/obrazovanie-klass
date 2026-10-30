@@ -2,10 +2,10 @@ import { SectionHead } from '@/components/ui/SectionHead';
 import { AdmissionPath } from '@/components/widgets/AdmissionPath';
 import { BookingForm } from '@/components/widgets/BookingForm';
 
-export function Admission() {
+export function Admission({ n = 'IX', title = 'Поступление', lead = 'Пять шагов от первого звонка до первого дня. Начните с экскурсии — она бесплатная.' }: { n?: string; title?: string; lead?: string }) {
   return (
     <section id="admission" aria-labelledby="a-h" className="mx-auto max-w-6xl scroll-mt-16 px-4 py-20 md:px-8 md:py-28">
-      <SectionHead n="IX" id="a-h" title="Поступление" lead="Пять шагов от первого звонка до первого дня. Начните с экскурсии — она бесплатная." />
+      <SectionHead n={n} id="a-h" title={title} lead={lead} />
       <AdmissionPath />
       <div className="mt-16 grid gap-8 md:grid-cols-[1fr_1.4fr]">
         <div>

@@ -2,6 +2,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AnimatePresence, motion } from 'motion/react';
 import { Check, Copy, Phone } from 'lucide-react';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -123,7 +124,7 @@ export function BookingForm() {
             <div>
               <Button type="submit">Записаться на экскурсию</Button>
               <p className="mt-3 text-xs text-ink-soft">
-                {consent} (<a href="/privacy/" className="link-u">политика</a>).
+                {consent} (<Link href="/privacy/" className="link-u">политика</Link>).
               </p>
             </div>
           </motion.form>

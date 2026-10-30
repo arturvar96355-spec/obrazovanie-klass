@@ -18,7 +18,7 @@ export function Campus() {
           <Reveal key={c.title} delay={i * 0.15}>
             <article className="border-t-2 border-bottle pt-6">
               <h3 className="text-3xl"><T>{c.title}</T></h3>
-              <p className="mt-1 text-sm uppercase tracking-wider text-gold">{c.meta}</p>
+              <p className="mt-1 text-sm uppercase tracking-wider text-gold-ink">{c.meta}</p>
               <p className="dropcap mt-5 text-ink-soft"><T>{c.text}</T></p>
               <div className="mt-6"><Button href={c.href} variant="ghost">{c.cta}</Button></div>
             </article>
