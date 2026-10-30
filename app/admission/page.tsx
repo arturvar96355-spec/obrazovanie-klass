@@ -12,8 +12,8 @@ export default function AdmissionPage() {
     <Shell>
       <PageHero title={admissionPage.title} lead={admissionPage.lead} />
       <Admission n="" title="Путь поступления и запись" lead="Выберите день и время — заявка откроется в мессенджере с готовым текстом." />
-      <Wrap className="bg-paper !max-w-none">
-        <div className="mx-auto max-w-6xl">
+      <Wrap bg="bg-paper">
+        <div className="mx-auto max-w-7xl">
           <p className="max-w-2xl text-lg"><T>{admissionPage.process}</T></p>
           <h2 className="mt-10 text-3xl">{admissionPage.docsTitle}</h2>
           <ol className="mt-5 grid gap-x-10 md:grid-cols-2">

@@ -14,7 +14,7 @@
 | 360 px без горизонтального скролла; нижняя панель | ✅ | проверено на 360/390/768/1024/1440/1920 |
 | Формы: валидация, успех, открытие мессенджера | ✅ | Telegram: текст копируется в буфер; WhatsApp — wa.me с текстом |
 | noindex, robots.txt, метка концепта | ✅ | |
-| Lighthouse mobile: Perf ≥ 85, A11y ≥ 95 | ⚠️ | локально (throttling Lighthouse): главная Perf 95 / A11y 97; /school Perf 91 / A11y 100; /prices и /admission — A11y 100. SEO ≈ 63 из-за noindex — ожидаемо |
+| Lighthouse mobile: Perf ≥ 85, A11y ≥ 95 | ⚠️ | локально (throttling Lighthouse): главная Perf 93 / A11y 96; /school Perf 88 / A11y 100 (после редизайна D-21); /prices и /admission — A11y 100. SEO ≈ 63 из-за noindex — ожидаемо |
 | Нет чужих логотипов и товарных знаков | ✅ | |
 | README, DECISIONS, credits.ts, `npm run placeholders` | ✅ | |
 | Открывается из России без VPN | ⏳ | проверить вручную после деплоя |

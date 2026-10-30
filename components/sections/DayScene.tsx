@@ -12,16 +12,15 @@ const END = 19;
 function Clock({ handsRef }: { handsRef: React.RefObject<{ h: SVGGElement | null; m: SVGGElement | null }> }) {
   return (
     <svg viewBox="0 0 400 400" role="img" aria-label="Циферблат: день ученика с 8:00 до 19:00" className="h-full w-full">
-      <circle cx="200" cy="200" r="188" fill="#EFE8D8" stroke="#B08D57" strokeWidth="3" />
-      <circle cx="200" cy="200" r="174" fill="none" stroke="#B08D57" strokeWidth="1" />
+      <circle cx="200" cy="200" r="188" fill="#fff" stroke="#1E3B2F" strokeWidth="2" />
       {Array.from({ length: 60 }, (_, i) => {
         const major = i % 5 === 0;
-        return <line key={i} x1="200" y1={major ? 28 : 34} x2="200" y2="42" stroke={major ? '#1E3B2F' : '#B08D57'} strokeWidth={major ? 3 : 1} transform={`rotate(${i * 6} 200 200)`} />;
+        return <line key={i} x1="200" y1={major ? 28 : 34} x2="200" y2="42" stroke={major ? '#1E3B2F' : '#b9b09a'} strokeWidth={major ? 3 : 1} transform={`rotate(${i * 6} 200 200)`} />;
       })}
       {Array.from({ length: 12 }, (_, i) => {
         const n = i === 0 ? 12 : i;
         const a = (i * 30 - 90) * (Math.PI / 180);
-        return <text key={i} x={200 + 140 * Math.cos(a)} y={200 + 140 * Math.sin(a) + 10} textAnchor="middle" fontFamily="var(--font-playfair), serif" fontSize="28" fill="#1A1A17">{n}</text>;
+        return <text key={i} x={200 + 140 * Math.cos(a)} y={200 + 140 * Math.sin(a) + 10} textAnchor="middle" fontFamily="var(--font-serif-face), serif" fontSize="26" fill="#1A1A17">{n}</text>;
       })}
       <g ref={(el) => { handsRef.current!.h = el; }}>
         <rect x="195" y="105" width="10" height="100" fill="#1E3B2F" rx="2" />
@@ -29,7 +28,7 @@ function Clock({ handsRef }: { handsRef: React.RefObject<{ h: SVGGElement | null
       <g ref={(el) => { handsRef.current!.m = el; }}>
         <rect x="197.5" y="62" width="5" height="143" fill="#7A2633" rx="2" />
       </g>
-      <circle cx="200" cy="200" r="9" fill="#B08D57" />
+      <circle cx="200" cy="200" r="8" fill="#1E3B2F" />
     </svg>
   );
 }
@@ -38,8 +37,8 @@ function Card({ i }: { i: number }) {
   const s = day[i];
   return (
     <>
-      <p className="font-serif text-6xl text-claret md:text-7xl">{s.time}</p>
-      <h3 className="mt-3 text-3xl md:text-4xl"><T>{s.title}</T></h3>
+      <p className="font-serif text-5xl font-bold text-claret md:text-6xl">{s.time}</p>
+      <h3 className="mt-3 text-2xl md:text-3xl"><T>{s.title}</T></h3>
       <p className="mt-4 max-w-md text-lg text-ink-soft"><T>{s.text}</T></p>
     </>
   );
@@ -72,7 +71,7 @@ export function DayScene() {
     gsap.registerPlugin(ScrollTrigger);
     const st = ScrollTrigger.create({
       trigger: root.current,
-      start: 'top top',
+      start: 'top top+=52',
       end: '+=400%',
       pin: true,
       scrub: true,
@@ -111,8 +110,8 @@ export function DayScene() {
           <span aria-hidden className="absolute bottom-0 left-[1.65rem] top-0 w-px bg-line md:left-[2.4rem]" />
           {day.map((s) => (
             <Reveal key={s.time} className="relative mb-10 pl-12">
-              <span aria-hidden className="absolute left-[-0.1rem] top-2 h-3 w-3 rounded-full border-2 border-claret bg-ivory" />
-              <p className="font-serif text-4xl text-claret">{s.time}</p>
+              <span aria-hidden className="absolute left-[-0.1rem] top-2 h-3 w-3 rounded-full border-2 border-bottle bg-ivory" />
+              <p className="font-serif text-3xl font-bold text-claret">{s.time}</p>
               <h3 className="mt-1 text-2xl"><T>{s.title}</T></h3>
               <p className="mt-2 text-ink-soft"><T>{s.text}</T></p>
             </Reveal>
@@ -123,7 +122,7 @@ export function DayScene() {
   }
 
   return (
-    <section id="day" aria-labelledby="day-h" ref={root} className="relative h-screen overflow-hidden bg-ivory">
+    <section id="day" aria-labelledby="day-h" ref={root} className="relative h-[calc(100vh-52px)] overflow-hidden bg-ivory">
       <div className="flex h-full flex-col">
         {header}
         <div className="mx-auto grid w-full max-w-6xl flex-1 grid-cols-2 items-center gap-12 px-8">
@@ -141,9 +140,9 @@ export function DayScene() {
         </div>
         <div className="mx-auto mb-10 w-full max-w-6xl px-8">
           <div className="relative h-px bg-line">
-            <div ref={bar} className="absolute inset-0 origin-left bg-claret" style={{ transform: 'scaleX(0)' }} />
+            <div ref={bar} className="absolute -inset-y-px inset-x-0 origin-left bg-claret" style={{ transform: 'scaleX(0)' }} />
             {day.map((s) => (
-              <span key={s.time} aria-hidden className="absolute top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold" style={{ left: `${((s.hour - START) / (END - START)) * 100}%` }} />
+              <span key={s.time} aria-hidden className="absolute top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-bottle" style={{ left: `${((s.hour - START) / (END - START)) * 100}%` }} />
             ))}
           </div>
           <div className="mt-2 flex justify-between text-xs text-ink-soft"><span>8:00</span><span>19:00</span></div>

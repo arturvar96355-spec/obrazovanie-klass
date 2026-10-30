@@ -4,14 +4,16 @@ import './globals.css';
 import { LenisProvider } from '@/components/motion/LenisProvider';
 import { site } from '@/content/site';
 
-const playfair = localFont({
+const serif = localFont({
   src: [
-    { path: './fonts/playfair-display-cyrillic-wght-normal.woff2', style: 'normal', weight: '400 900' },
-    { path: './fonts/playfair-display-latin-wght-normal.woff2', style: 'normal', weight: '400 900' },
-    { path: './fonts/playfair-display-cyrillic-wght-italic.woff2', style: 'italic', weight: '400 900' },
-    { path: './fonts/playfair-display-latin-wght-italic.woff2', style: 'italic', weight: '400 900' },
+    { path: './fonts/pt-serif-cyrillic-400-normal.woff2', style: 'normal', weight: '400' },
+    { path: './fonts/pt-serif-latin-400-normal.woff2', style: 'normal', weight: '400' },
+    { path: './fonts/pt-serif-cyrillic-700-normal.woff2', style: 'normal', weight: '700' },
+    { path: './fonts/pt-serif-latin-700-normal.woff2', style: 'normal', weight: '700' },
+    { path: './fonts/pt-serif-cyrillic-400-italic.woff2', style: 'italic', weight: '400' },
+    { path: './fonts/pt-serif-latin-400-italic.woff2', style: 'italic', weight: '400' },
   ],
-  variable: '--font-playfair',
+  variable: '--font-serif-face',
   display: 'swap',
 });
 const golos = localFont({
@@ -37,7 +39,7 @@ export const viewport: Viewport = { themeColor: '#1E3B2F', width: 'device-width'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ru" className={`${playfair.variable} ${golos.variable}`} suppressHydrationWarning>
+    <html lang="ru" className={`${serif.variable} ${golos.variable}`} suppressHydrationWarning>
       <body>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-bottle focus:px-4 focus:py-2 focus:text-ivory">
           К содержимому

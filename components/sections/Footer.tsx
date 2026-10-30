@@ -6,7 +6,7 @@ import { A11yToggle } from '@/components/widgets/A11yToggle';
 export function Footer() {
   return (
     <footer className="on-dark bg-bottle pb-24 pt-14 text-ivory md:pb-14">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-3 md:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 md:grid-cols-3 md:px-8">
         <div>
           <p className="font-serif text-2xl">{site.name}</p>
           <p className="mt-3 text-sm text-ivory/75"><T>{`${site.legalName}. ${site.address.city}, ${site.address.street}.`}</T></p>
@@ -25,7 +25,7 @@ export function Footer() {
           <li><a className="link-u" href={site.social.telegramChannel} target="_blank" rel="noopener noreferrer">Telegram-канал</a></li>
         </ul>
       </div>
-      <p className="mx-auto mt-12 max-w-6xl border-t border-ivory/20 px-4 pt-6 text-xs text-ivory/60 md:px-8">{site.concept.note}</p>
+      <p className="mx-auto mt-12 max-w-7xl border-t border-ivory/20 px-4 pt-6 text-xs text-ivory/60 md:px-8">{site.concept.note}</p>
     </footer>
   );
 }

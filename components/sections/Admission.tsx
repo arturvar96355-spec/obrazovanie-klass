@@ -4,7 +4,7 @@ import { BookingForm } from '@/components/widgets/BookingForm';
 
 export function Admission({ n = 'IX', title = 'Поступление', lead = 'Пять шагов от первого звонка до первого дня. Начните с экскурсии — она бесплатная.' }: { n?: string; title?: string; lead?: string }) {
   return (
-    <section id="admission" aria-labelledby="a-h" className="mx-auto max-w-6xl scroll-mt-16 px-4 py-20 md:px-8 md:py-28">
+    <section id="admission" aria-labelledby="a-h" className="mx-auto max-w-7xl scroll-mt-16 px-4 py-16 md:px-8 md:py-24">
       <SectionHead n={n} id="a-h" title={title} lead={lead} />
       <AdmissionPath />
       <div className="mt-16 grid gap-8 md:grid-cols-[1fr_1.4fr]">

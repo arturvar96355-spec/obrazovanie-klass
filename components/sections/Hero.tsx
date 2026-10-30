@@ -1,42 +1,44 @@
-import { Magnetic } from '@/components/motion/Magnetic';
 import { CountUp } from '@/components/motion/CountUp';
 import { SplitHeading } from '@/components/motion/SplitHeading';
 import { Button } from '@/components/ui/Button';
 import { T } from '@/components/ui/T';
 import { hero } from '@/content/copy';
-import { site } from '@/content/site';
 import { photoPlaceholder } from '@/content/credits';
-import { HeroArt } from './HeroArt';
+import { site } from '@/content/site';
 
+/** Баннер по образцу текущего сайта: тёмный фон под фото, белый заголовок, кнопка заявки. Фото школы — от клиента. */
 export function Hero() {
   return (
-    <section aria-label="Главная" className="mx-auto grid max-w-6xl gap-10 px-4 pb-16 pt-10 md:grid-cols-12 md:gap-8 md:px-8 md:pb-24 md:pt-16">
-      <div className="md:col-span-7 md:pt-6">
-        <p className="roman mb-6 text-sm uppercase tracking-[0.3em]"><T>Школа и детский сад · с 2002 года</T></p>
-        <SplitHeading text={hero.title} className="text-[3.1rem] leading-[1.02] sm:text-7xl lg:text-[5.6rem]" />
-        <div aria-hidden className="mt-5 h-[3px] w-24 origin-left animate-[draw_.8s_1.2s_both_cubic-bezier(.22,1,.36,1)] bg-claret" />
-        <div className="fade-up" style={{ ["--d" as string]: "0.35s" }}>
-          <p className="mt-8 max-w-xl text-lg text-ink-soft"><T>{hero.subtitle}</T></p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Magnetic><Button href="#admission">{hero.cta}</Button></Magnetic>
-            <a href={`tel:${site.phones.school.tel}`} className="link-u text-bottle">{site.phones.school.display}</a>
-          </div>
+    <section aria-label="Главная" className="on-dark relative overflow-hidden bg-bottle text-ivory">
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-[0.07]"
+        style={{ backgroundImage: 'repeating-linear-gradient(90deg, #fff 0 1px, transparent 1px 96px), repeating-linear-gradient(0deg, #fff 0 1px, transparent 1px 96px)' }}
+      />
+      <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-16 md:px-8 md:pb-14 md:pt-28">
+        <p className="fade-up text-sm uppercase tracking-[0.2em] text-gold-soft">Частная школа и детский сад · Очаково-Матвеевское</p>
+        <SplitHeading text={hero.title} className="mt-5 max-w-4xl text-5xl leading-[1.05] sm:text-6xl lg:text-[5.25rem]" />
+        <div aria-hidden className="draw mt-6 h-[2px] w-20 bg-gold-soft" style={{ ['--d' as string]: '0.9s' }} />
+        <p className="fade-up mt-6 max-w-2xl text-lg text-ivory/85" style={{ ['--d' as string]: '0.4s' }}><T>{hero.subtitle}</T></p>
+        <div className="fade-up mt-8 flex flex-wrap gap-3" style={{ ['--d' as string]: '0.55s' }}>
+          <Button href="#admission" variant="light">{hero.cta}</Button>
+          <Button href={`tel:${site.phones.school.tel}`} variant="ghost" className="!border-ivory !text-ivory hover:!bg-ivory hover:!text-bottle">{site.phones.school.display}</Button>
         </div>
-        <dl className="mt-12 grid max-w-xl grid-cols-3 gap-4 border-t border-line pt-6">
-          <div><dt className="text-xs uppercase tracking-wider text-ink-soft">в классе</dt><dd className="font-serif text-3xl text-bottle">{site.stats.classSize}</dd></div>
-          <div><dt className="text-xs uppercase tracking-wider text-ink-soft">режим</dt><dd className="font-serif text-3xl text-bottle">{site.hours.building}</dd></div>
-          <div>
-            <dt className="text-xs uppercase tracking-wider text-ink-soft">на Яндекс Картах</dt>
-            <dd className="font-serif text-3xl text-bottle"><CountUp to={4.9} decimals={1} /></dd>
-          </div>
+        <dl className="mt-14 grid grid-cols-2 gap-px border border-white/20 bg-white/20 md:grid-cols-4">
+          {[
+            [<span key="a">{site.stats.classSize}</span>, 'человек в классе'],
+            [<span key="b">{site.hours.building}</span>, 'школа открыта'],
+            [<span key="c"><CountUp to={4.9} decimals={1} /></span>, `на Яндекс Картах · ${site.rating.school.count} оценки`],
+            [<span key="d">{site.founded}</span>, 'год основания'],
+          ].map(([v, l], i) => (
+            <div key={i} className="bg-bottle px-5 py-4">
+              <dd className="font-serif text-3xl font-bold">{v}</dd>
+              <dt className="mt-1 text-xs text-ivory/70">{l}</dt>
+            </div>
+          ))}
         </dl>
+        <p className="mt-4 text-right text-xs text-ivory/60"><T>{photoPlaceholder}</T></p>
       </div>
-      <figure className="md:col-span-5">
-        <div className="relative aspect-[4/5] overflow-hidden border border-line">
-          <div className="ken-burns h-full w-full"><HeroArt /></div>
-        </div>
-        <figcaption className="mt-2 font-serif text-sm italic text-ink-soft"><T>{`Иллюстрация. ${photoPlaceholder}`}</T></figcaption>
-      </figure>
     </section>
   );
 }

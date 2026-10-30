@@ -7,7 +7,7 @@ const styles: Record<Variant, string> = {
   ghost: 'bg-transparent text-bottle border-bottle hover:bg-bottle hover:text-ivory',
   light: 'bg-ivory text-bottle border-ivory hover:bg-paper',
 };
-const base = 'inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 border px-6 py-3 text-[0.95rem] font-medium tracking-wide transition-[background-color,color,border-color,transform] duration-300 hover:-translate-y-0.5';
+const base = 'inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 border px-6 py-3 text-[0.95rem] font-medium transition-colors duration-300';
 
 type LinkProps = ComponentProps<'a'> & { variant?: Variant; href: string };
 type ButtonProps = ComponentProps<'button'> & { variant?: Variant; href?: undefined };

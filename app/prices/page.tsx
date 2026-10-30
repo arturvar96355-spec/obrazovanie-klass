@@ -37,8 +37,8 @@ export default function PricesPage() {
         <p className="mt-4 max-w-2xl text-sm text-ink-soft"><T>{pricesPage.note}</T></p>
         <p className="mt-2 text-sm"><T>{`Сад, неполный день: ${formatRub(gardenPartDay.perMonth)} в месяц. ${gardenPartDay.note}`}</T></p>
       </Wrap>
-      <Wrap className="bg-paper !max-w-none">
-        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
+      <Wrap bg="bg-paper">
+        <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-2">
           <div>
             <h2 className="text-3xl">Скидки</h2>
             <dl className="mt-5 divide-y divide-line border-y border-line">

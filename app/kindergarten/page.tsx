@@ -40,8 +40,8 @@ export default function KindergartenPage() {
           </div>
         </div>
       </Wrap>
-      <Wrap className="bg-paper !max-w-none">
-        <div className="mx-auto max-w-6xl">
+      <Wrap bg="bg-paper">
+        <div className="mx-auto max-w-7xl">
           <h2 className="text-3xl md:text-4xl">Что важно знать</h2>
           <ul className="mt-8 grid gap-6 md:grid-cols-3">
             {garden.facts.map((f) => (

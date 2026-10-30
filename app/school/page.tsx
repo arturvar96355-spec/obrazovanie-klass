@@ -39,8 +39,8 @@ export default function SchoolPage() {
           ))}
         </ul>
       </Wrap>
-      <Wrap id="schedule" className="bg-paper !max-w-none">
-        <div className="mx-auto max-w-6xl">
+      <Wrap id="schedule" bg="bg-paper">
+        <div className="mx-auto max-w-7xl">
           <h2 className="text-3xl md:text-4xl">{school.daily.title}</h2>
           <p className="mt-3 max-w-2xl text-ink-soft"><T>{school.daily.text}</T></p>
           <div className="mt-8 overflow-x-auto">

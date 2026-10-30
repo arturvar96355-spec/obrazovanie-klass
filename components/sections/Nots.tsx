@@ -8,19 +8,19 @@ import { nots } from '@/content/copy';
 export function Nots() {
   const reduce = useReducedMotion();
   return (
-    <section id="nots" aria-labelledby="nots-h" className="bg-paper py-20 md:py-28">
+    <section id="nots" aria-labelledby="nots-h" className="border-b border-line py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 md:px-8">
         <SectionHead n="I" id="nots-h" title="Чего у нас нет" lead="Всё лишнее мы убрали. Остались учителя, классы и время." />
-        <ul className="grid gap-x-12 gap-y-12 md:grid-cols-2">
+        <ul className="grid gap-x-12 gap-y-10 md:grid-cols-2">
           {nots.map((n, i) => (
             <li key={n.word}>
-              <p className="font-serif text-3xl text-ink md:text-4xl lg:text-5xl">
+              <p className="font-serif text-2xl font-bold text-ink md:text-3xl lg:text-4xl">
                 <span className="text-ink-soft">нет </span>
                 <span className="relative inline-block">
                   {n.word}
                   <motion.span
                     aria-hidden
-                    className="absolute left-0 top-[56%] block h-[3px] w-full origin-left bg-claret"
+                    className="absolute left-0 top-[58%] block h-[2px] w-full origin-left bg-claret"
                     initial={{ scaleX: reduce ? 1 : 0 }}
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true, amount: 0.8 }}

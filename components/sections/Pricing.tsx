@@ -6,7 +6,7 @@ import { Calculator } from '@/components/widgets/Calculator';
 
 export function Pricing() {
   return (
-    <section id="prices" aria-labelledby="p-h" className="mx-auto max-w-6xl px-4 py-20 md:px-8 md:py-28">
+    <section id="prices" aria-labelledby="p-h" className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-24">
       <SectionHead n="VII" id="p-h" title="Стоимость" lead="Без вступительных взносов. Посчитайте, сколько это стоит именно для Вашей семьи." />
       <Reveal><Calculator /></Reveal>
       <div className="mt-16 grid gap-10 md:grid-cols-[1.3fr_1fr]">

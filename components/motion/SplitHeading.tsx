@@ -1,4 +1,4 @@
-/** Заголовок появляется по буквам с маской снизу вверх (stagger 25 мс). Серверный компонент, анимация на CSS — без ожидания JS. */
+/** Заголовок появляется по буквам с маской снизу вверх (stagger 25 мс). Серверный компонент, анимация на CSS. */
 export function SplitHeading({ text, className = '' }: { text: string; className?: string }) {
   let i = 0;
   return (
