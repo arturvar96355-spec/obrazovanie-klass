@@ -93,3 +93,9 @@ html.a11y-still *, html.a11y-still *::before, html.a11y-still *::after { animati
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+@keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes kb { from { transform: scale(1); } to { transform: scale(1.06); } }
+.ken-burns { animation: kb 12s ease-in-out infinite alternate; transform-origin: 60% 40%; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .ken-burns { animation: none !important; } }
+html.a11y-still .ken-burns { animation: none !important; }

@@ -6,14 +6,14 @@ const styles: Record<Variant, string> = {
   ghost: 'bg-transparent text-bottle border-bottle hover:bg-bottle hover:text-ivory',
   light: 'bg-ivory text-bottle border-ivory hover:bg-paper',
 };
+const base = 'inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 border px-6 py-3 text-[0.95rem] font-medium tracking-wide transition-[background-color,color,border-color,transform] duration-300 hover:-translate-y-0.5';
 
-type Props = ComponentProps<'a'> & { variant?: Variant };
+type LinkProps = ComponentProps<'a'> & { variant?: Variant; href: string };
+type ButtonProps = ComponentProps<'button'> & { variant?: Variant; href?: undefined };
 
-export function Button({ variant = 'primary', className = '', ...rest }: Props) {
-  return (
-    <a
-      {...rest}
-      className={`inline-flex min-h-11 items-center justify-center gap-2 border px-6 py-3 text-[0.95rem] font-medium tracking-wide transition-[background-color,color,border-color,transform] duration-300 hover:-translate-y-0.5 ${styles[variant]} ${className}`}
-    />
-  );
+export function Button(props: LinkProps | ButtonProps) {
+  const { variant = 'primary', className = '', ...rest } = props;
+  const cls = `${base} ${styles[variant]} ${className}`;
+  if (props.href !== undefined) return <a {...(rest as ComponentProps<'a'>)} className={cls} />;
+  return <button {...(rest as ComponentProps<'button'>)} className={cls} />;
 }
